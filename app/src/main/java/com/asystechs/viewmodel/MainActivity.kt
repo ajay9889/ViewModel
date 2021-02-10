@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
         viewModelFactory = MainActivityViewModelFactory(125)
         viewModel = ViewModelProvider(this,viewModelFactory).get(MainActivityViewModel::class.java)
         binding.resultTextView.text = viewModel.getTotal().toString()
-
         binding.insertButton.setOnClickListener {
             viewModel.setTotal(binding.inputEditText.text.toString().toInt())
             binding.resultTextView.text = viewModel.getTotal().toString()
