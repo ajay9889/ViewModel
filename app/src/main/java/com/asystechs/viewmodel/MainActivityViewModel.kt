@@ -1,15 +1,20 @@
 package com.asystechs.viewmodel.jitpack
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class MainActivityViewModel(startingTotal : Int) : ViewModel() {
-    var multableLiveData = MutableLiveData<Int>();
+    private var mutableLiveData = MutableLiveData<Int>();
+
+    val getFinalData : LiveData<Int>
+    get() = mutableLiveData
+
     init {
-        multableLiveData.value = startingTotal
+        mutableLiveData.value = startingTotal
     }
 
     fun setTotal(input:Int){
-        multableLiveData.value=  multableLiveData.value?.plus(input);
+        mutableLiveData.value=  mutableLiveData.value?.plus(input);
     }
 }

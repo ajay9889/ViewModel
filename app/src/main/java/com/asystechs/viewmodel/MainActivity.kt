@@ -34,7 +34,8 @@ class MainActivity : AppCompatActivity() {
          */
         /*
         *Beuty of Live Data
-        * */
+        *
+        * View Model with Data binding
 
         viewModel.multableLiveData.observe(this, Observer {
             binding.resultTextView.text =it.toString()
@@ -46,5 +47,18 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+         */
+
+
+        /**
+         * Live Data and Data binding
+         * */
+        binding.lifecycleOwner = this;
+        binding.mainActivityViewModel = viewModel
+        binding.insertButton.setOnClickListener {
+            if(!(TextUtils.isEmpty(binding.inputEditText.text))){
+                viewModel.setTotal(binding.inputEditText.text.toString().toInt());
+            }
+        }
     }
 }
