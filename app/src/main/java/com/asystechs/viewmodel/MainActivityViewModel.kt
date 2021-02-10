@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class MainActivityViewModel(startingTotal : Int) : ViewModel() {
+
+    // to encapsulate data object to access by other class
     private var mutableLiveData = MutableLiveData<Int>();
 
     val getFinalData : LiveData<Int>
