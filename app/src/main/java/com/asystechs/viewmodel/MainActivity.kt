@@ -7,7 +7,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.lifecycleScope
 import com.asystechs.viewmodel.jitpack.databinding.ActivityMainBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -18,6 +21,19 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         viewModelFactory = MainActivityViewModelFactory(125)
         viewModel = ViewModelProvider(this,viewModelFactory).get(MainActivityViewModel::class.java)
+
+        lifecycleScope.launch(Dispatchers.IO) {
+
+        }
+        lifecycleScope.launchWhenCreated {
+
+        }
+        lifecycleScope.launchWhenStarted {
+
+        }
+        lifecycleScope.launchWhenResumed {
+
+        }
 
         /**
          * View Model
@@ -55,6 +71,7 @@ class MainActivity : AppCompatActivity() {
          * */
         binding.lifecycleOwner = this;
         binding.mainActivityViewModel = viewModel
+
         binding.insertButton.setOnClickListener {
             if(!(TextUtils.isEmpty(binding.inputEditText.text))){
                 viewModel.setTotal(binding.inputEditText.text.toString().toInt());

@@ -10,4 +10,6 @@ class MainnavigationActivity:  AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout)
     }
+
+
 }
